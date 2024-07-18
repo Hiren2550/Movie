@@ -1,0 +1,12 @@
+this is is main branch
+
+npm install    --current folder
+npm run dev    -- for start node server
+npm install    --Movie folder
+npm run dev    --for start React server
+
+First sign Up
+after that sign In 
+view all movie on home page 
+click on each movie for movie detail page
+search movie
