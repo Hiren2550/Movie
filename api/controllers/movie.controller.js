@@ -1,13 +1,14 @@
 import fetch from "node-fetch";
 import Movie from "../models/movie.model.js";
 
-const url = "https://api.themoviedb.org/3/trending/all/day?language=en-US";
+const url =
+  "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
 const options = {
   method: "GET",
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NzI5YWRkNzExYzM2OTYwNjk5MDIyZGQ4YTRmMjhiMCIsIm5iZiI6MTcyMTE5MTc5NC42NzUwMiwic3ViIjoiNjY5NWY2MmUzYjQ3YzAzNzI2MTU0YWMzIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.ltKv2jEH7DlkLM7qtWYsIg3c73A5dfHAl_EWZgZQHko",
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzRkNjhkOTkzNTRhNGU4NWI3MDU1MjBkMTRkYjI5ZSIsIm5iZiI6MTcyNDc2ODQ5OC4wNTIxNTUsInN1YiI6IjY2Y2RkZmViODAyMzk5ZjkwOWJkMTdkYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.__b4oOF6YvzhAY5WDWVUufXWGguO2r4gRMfrwWw49SE",
   },
 };
 
@@ -40,14 +41,9 @@ export const movies = async (req, res, next) => {
 
 export const movie = async (req, res, next) => {
   try {
-    const id = Number(req.params.id);
-    const response = await fetch(url, options);
-    let data = await response.json();
-    data = data.results;
-
-    const movie_data = await data.find((data) => id === data.id);
-
-    res.status(201).json(movie_data);
+    const id = req.params.id;
+    const movie = await Movie.findById(id);
+    res.status(201).json(movie);
   } catch (error) {
     console.log(error);
     next(error);

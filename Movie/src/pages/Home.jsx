@@ -30,7 +30,7 @@ const Home = () => {
           movies.map((movie) => (
             <Link
               key={movie.id}
-              to={`/movies/${movie.id}`}
+              to={`/movies/${movie._id}`}
               className="rounded m-4 max-w-sm border border-gray-500 w-full sm:w-1/6"
             >
               <img

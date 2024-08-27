@@ -6,8 +6,10 @@ import Loading from "../components/Loading";
 
 const Movie = () => {
   const params = useParams();
+  console.log(params);
   const [load, setLoad] = useState(false);
   const [movie, setMovie] = useState({});
+  // console.log(movie);
   const fetchMovie = async () => {
     setLoad(true);
     const res = await fetch(`/api/movies/${params.id}`);
@@ -35,7 +37,7 @@ const Movie = () => {
           <div className="py-3 px-4 ">
             <img
               className="rounded-lg hover:scale-95 "
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt="Poster_Image"
               height={300}
               width={366}
