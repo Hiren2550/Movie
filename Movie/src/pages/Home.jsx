@@ -23,7 +23,7 @@ const Home = () => {
         Popular Movies
       </h1>
 
-      <div className="flex flex-col sm:flex-row flex-wrap justify-center ">
+      <div className="flex flex-col max-w-full pr-6 sm:flex-row flex-wrap justify-center items-center ">
         {load && <Loading />}
 
         {!load &&
@@ -31,7 +31,7 @@ const Home = () => {
             <Link
               key={movie.id}
               to={`/movies/${movie._id}`}
-              className="rounded m-4 max-w-sm border border-gray-500 w-full p-6 sm:p-1 sm:w-1/6"
+              className="rounded m-4 max-w-sm border border-gray-500 w-full  sm:w-1/6"
             >
               <img
                 className="hover:scale-105 w-full  "
